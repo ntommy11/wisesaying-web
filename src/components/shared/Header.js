@@ -1,6 +1,6 @@
 import { useReactiveVar } from "@apollo/client";
 import { faCompass, faUser } from "@fortawesome/free-regular-svg-icons";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -45,6 +45,12 @@ const IconsContainer = styled.div`
   display:flex;
   align-items:center;
 `
+const Title = styled.span`
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: bolder;
+  display: inline;
+  font-size: 24px;
+`
 
 
 function Header() {
@@ -54,7 +60,8 @@ function Header() {
     <SHeader>
       <Wrapper>
         <Column>
-          <img src="logo2.png" width="120" style={{marginLeft:20}}/>
+          <Title>인생글귀 </Title>
+          <FontAwesomeIcon icon={faQuoteRight} style={{fontSize:24}}/>
         </Column>
         <Column>
           {isLoggedIn ? (

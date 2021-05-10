@@ -61,6 +61,7 @@ function Login(){
         alert(error);
       }
       else{
+        console.log("token:",token);
         logUserIn(token);
       }
     }

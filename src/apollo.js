@@ -3,6 +3,7 @@ import {setContext} from '@apollo/client/link/context'
 
 const TOKEN = "token";
 
+export const tokenVar = makeVar("");
 export const isLoggedInVar = makeVar(Boolean(localStorage.getItem(TOKEN))); // Reactive variable!
 export const logUserIn = (token)=>{
   localStorage.setItem(TOKEN,token);
@@ -34,7 +35,7 @@ const authLink = setContext((_, {headers})=>{
   return {
     headers:{
       ...headers,
-      token: localStorage.getItem(TOKEN),
+      authorization: localStorage.getItem(TOKEN),
     }
   }
 })
