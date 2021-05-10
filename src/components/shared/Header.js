@@ -32,7 +32,7 @@ const SEARCH_AUTHOR = gql`
 const SHeader = styled.header`
   width: 100%;
   border-bottom: 1px solid ${(props) => props.theme.borderColor};
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: white;
   padding: 18px 0px;
   display: flex;
   align-items: center;
@@ -73,6 +73,7 @@ const Title = styled.span`
   font-size: 28px;
 `
 const Input = styled.input`
+  text-align:center;
   box-sizing: border-box;
   width:150px;
   border-radius: 3px;
@@ -108,6 +109,7 @@ const SearchItem = styled.div`
 `
 
 function SearchAuthorResult({keyword}){
+  const history = useHistory();
   const {data, loading, error, fetchMore} = useQuery(SEARCH_AUTHOR,{
     variables:{
       keyword: keyword,
@@ -121,7 +123,13 @@ function SearchAuthorResult({keyword}){
         <SearchTitle>작자</SearchTitle>
         {data.searchAuthor.map((item,index)=>{
           return(
-            <SearchItem key={index}>
+            <SearchItem key={index} onClick={()=>{
+              history.push(routes.search,{
+                keyword:item.name,
+                id:item.id,
+                type:"author"
+              })
+            }}>
               {item.name}({item.totalSayings})
             </SearchItem>
           )
@@ -151,6 +159,7 @@ function SearchTagResult({keyword}){
               history.push(routes.search,{
                 keyword:item.name,
                 id:item.id,
+                type:"tag",
               })
             }}>
               {item.name}({item.totalSayings})
@@ -173,15 +182,16 @@ const SearchTitle = styled.div`
 const List = styled.div`
   position: absolute;
   width: 150px;
-  height: 100px;
+  height: 150px;
   background-color: white;
   overflow: scroll;
   overflow-x: hidden;
   border: 0.5px solid ${props=>props.theme.borderColor};
-
+  border-radius: 5px;
+  scrollbar-width: none;
 `
 
-function SearchResult({keyword}){
+function SearchResult({keyword,setValue}){
   return(
     <List>
       <SearchTagResult keyword={keyword}/>
@@ -197,7 +207,7 @@ function Header() {
     formState,
     watch,
     handleSubmit,
-    getValues,
+    setValue,
   } = useForm({
     mode:"onChange",
     defaultValues:{
@@ -216,6 +226,7 @@ function Header() {
       }else{
         setShowResult(true);
       }
+      setValue("keyword","");
       //console.log('clicked!');
     })
   })

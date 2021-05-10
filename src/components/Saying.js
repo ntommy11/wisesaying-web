@@ -16,21 +16,20 @@ const TOGGLE_LIKE = gql`
     }
   }
 `
-
+const TagWrapper = styled.div`
+  margin-left: 5px;
+  background-color: #ededed;
+  padding: 3px 5px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #676767;
+  margin-bottom: 10px;
+`
 function Tag({name}){
   return(
-    <div style={{
-      marginLeft: 5,
-      backgroundColor: "#dedede",
-      paddingBlock: 3,
-      paddingInline: 7,
-      borderRadius: 10,
-      fontSize: 12,
-      color: "#676767",
-      marginBottom: 10,
-    }}>
+    <TagWrapper>
       <span>{name}</span>
-    </div>
+    </TagWrapper>
   )
 }
 function Today({darkmode}){
@@ -135,19 +134,20 @@ export default function Saying({id, user, text, tags, author, isLike, isMine, to
 
 const Action = styled.span`
   width: 20px;
-  border: 1px dashed gray;
+  /*border: 1px dashed gray;*/
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction:column;
   padding: 0px 12px;
+  cursor: pointer;
 `
 
 const Footer = styled.div`
   align-items:center;
   padding: 10px 10px;
   display: flex;
-  border: 1px dashed gray;
+  /*border: 1px dashed gray;*/
 `
 
 const Header = styled.div`
@@ -176,7 +176,6 @@ const TextBody = styled.div`
   min-height: 200px;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 `
@@ -187,7 +186,7 @@ const Container = styled.div`
   border: 1px solid blueviolet;
   width: 350px;
   border-radius: 15px;
-  margin: 0px 30px;
+  margin: 10px 0px;
   min-height: 250px;
   overflow: hidden;
   box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);

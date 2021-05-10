@@ -40,9 +40,40 @@ const authLink = setContext((_, {headers})=>{
   }
 })
 
+const deduplicate = (array)=>{
+  let unique__ref = [];
+  let res = [];
+  array.forEach((obj)=>{
+    if(!unique__ref.includes(obj.__ref)){
+      unique__ref.push(obj.__ref);
+      res.push(obj);
+    }
+  });
+  return res;
+}
+
 export const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies:{
+      Query:{
+        fields:{
+          seeTagSaying:{
+            keyArgs:['id'],
+            merge(existing=[],incomming){
+              return deduplicate([...existing,...incomming]);
+            }
+          },
+          seeAuthorSaying:{
+            keyArgs:['id'],
+            merge(existing=[],incomming){
+              return deduplicate([...existing,...incomming]);
+            }
+          },
+        }
+      }
+    }
+  }),
   connectToDevTools: true,
 });
 

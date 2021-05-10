@@ -91,6 +91,7 @@ const CommentDelete = styled.span`
   margin-left: 10px;
   font-size: 12px;
   color: #bcbcbc;
+  cursor: pointer;
 `
 
 const CommentTime = styled.span`
