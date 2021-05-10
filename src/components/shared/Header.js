@@ -4,6 +4,7 @@ import { faHome, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMediaQuery } from "react-responsive";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { isLoggedInVar } from "../../apollo";
@@ -71,6 +72,12 @@ const Title = styled.span`
   font-family: 'Black Han Sans', sans-serif;
   display: inline;
   font-size: 28px;
+`
+
+const TitleM = styled.span`
+  font-family: 'Black Han Sans', sans-serif;
+  display: inline;
+  font-size: 20px;
 `
 const Input = styled.input`
   text-align:center;
@@ -218,6 +225,9 @@ function Header() {
   const [showResult,setShowResult] = useState(true);
   // do not show search result when clicked anywhere 
   // except the input 
+  const isMobile = useMediaQuery({
+    query: "(max-width:762px)",
+  })
   useEffect(()=>{
     document.addEventListener('click',(event)=>{
       //console.log(event.target.tagName);
@@ -234,7 +244,7 @@ function Header() {
     <SHeader>
       <Wrapper>
         <Column>
-          <Title>인생글귀 </Title>
+          {isMobile?<TitleM>인생글귀 </TitleM>:<Title>인생글귀 </Title>}
           <FontAwesomeIcon icon={faQuoteRight} style={{fontSize:24}}/>
         </Column>
         <Column>

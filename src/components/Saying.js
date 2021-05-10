@@ -50,7 +50,7 @@ function Today({darkmode}){
 }
 
 export default function Saying({id, user, text, tags, author, isLike, isMine, totalLikes, totalComments, today, refresh}){
-  const [openComments, setOpenComments] = useState(false);
+  const [openComments, setOpenComments] = useState(true);
   //console.log(refresh);
   // 텍스트 전처리
   console.log(author);
@@ -183,7 +183,7 @@ const TextBody = styled.div`
 const Container = styled.div`
   align-items: center;
   justify-content: center;
-  border: 1px solid blueviolet;
+  border: 0px solid #dedede;
   width: 350px;
   border-radius: 15px;
   margin: 10px 0px;
