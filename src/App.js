@@ -9,6 +9,7 @@ import routes from './routes';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import NotFound from './screens/NotFound';
+import Search from './screens/Search';
 import SignUp from './screens/SignUp';
 import { darkTheme, GlobalStyles, lightTheme } from './styles';
 
@@ -39,6 +40,11 @@ function App() {
                 <SignUp />
               </Route>
               ): null}
+              <Route path={routes.search}>
+                <Layout>
+                  <Search/>
+                </Layout>
+              </Route>
               <Route>
                 <NotFound />
               </Route>

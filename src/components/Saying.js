@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import {faHeart as faSolidHeart} from '@fortawesome/free-solid-svg-icons';
+import {faComment as faSolidComment} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag"
 import { useState } from "react";
@@ -120,7 +121,7 @@ export default function Saying({id, user, text, tags, author, isLike, isMine, to
           {totalLikes}
         </Action>
         <Action onClick={()=>setOpenComments(!openComments)}>
-          <FontAwesomeIcon icon={faComment} size={"lg"}/>
+          <FontAwesomeIcon icon={openComments?faSolidComment:faComment} size={"lg"}/>
           {totalComments}
         </Action>
         {
@@ -161,7 +162,6 @@ const Text = styled.div`
 `
 
 const TextContent = styled.div`
-  font-family: 'Nanum Myeongjo', serif;
   font-weight: bold;
 `
 const TextAuthor = styled.div`
@@ -191,4 +191,5 @@ const Container = styled.div`
   min-height: 250px;
   overflow: hidden;
   box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
 `

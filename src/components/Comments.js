@@ -3,6 +3,7 @@ import { faTimesCircle } from "@fortawesome/free-regular-svg-icons"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import gql from "graphql-tag"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
 
@@ -109,7 +110,10 @@ const CommentHeaderLeft = styled.span`
 `
 const CommentContainer = styled.div`
   margin-top: 5px;
-  padding: 0px 10px;
+  padding: 3px;
+  border-top: 1px solid #dedede;
+  margin-inline: 10px;
+
 `
 const CommentAuthor = styled.span`
   font-weight: 800;
@@ -175,15 +179,15 @@ export default function Comments({sid}){
 }
 
 const Container = styled.div`
-
+  padding: 10px 5px;
 `
 const Form = styled.div`
   border-top: 1px solid #dedede;
   padding-top: 10px;
   margin-top: 10px;
   background-color:#efefef;
-  padding: 5px;
-  border-radius: 8px;
+  padding: 7px;
+  border-radius: 15px;
   margin-inline: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 `
