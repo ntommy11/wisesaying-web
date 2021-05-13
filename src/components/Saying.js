@@ -50,7 +50,7 @@ function Today({darkmode}){
 }
 
 export default function Saying({id, user, text, tags, author, isLike, isMine, totalLikes, totalComments, today, refresh}){
-  const [openComments, setOpenComments] = useState(true);
+  const [openComments, setOpenComments] = useState(false);
   //console.log(refresh);
   // 텍스트 전처리
   console.log(author);
@@ -127,7 +127,7 @@ export default function Saying({id, user, text, tags, author, isLike, isMine, to
           tags.map((item,index)=><Tag key={index} {...item}/>)
         }
       </Footer>
-      {openComments&&<Comments sid={id}/>}
+      {/*openComments&&<Comments sid={id}/>*/}
     </Container>
   )
 }
